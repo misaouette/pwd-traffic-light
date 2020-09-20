@@ -5,12 +5,33 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-export namespace Components {}
-declare global {}
-declare namespace LocalJSX {}
+export namespace Components {
+    interface LoginForm {
+    }
+}
+declare global {
+    interface HTMLLoginFormElement extends Components.LoginForm, HTMLStencilElement {
+    }
+    var HTMLLoginFormElement: {
+        prototype: HTMLLoginFormElement;
+        new (): HTMLLoginFormElement;
+    };
+    interface HTMLElementTagNameMap {
+        "login-form": HTMLLoginFormElement;
+    }
+}
+declare namespace LocalJSX {
+    interface LoginForm {
+    }
+    interface IntrinsicElements {
+        "login-form": LoginForm;
+    }
+}
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
-        interface IntrinsicElements {}
+        interface IntrinsicElements {
+            "login-form": LocalJSX.LoginForm & JSXBase.HTMLAttributes<HTMLLoginFormElement>;
+        }
     }
 }
