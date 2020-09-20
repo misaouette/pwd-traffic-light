@@ -18,7 +18,7 @@ export class LoginForm {
           </header>
           <main></main>
           <footer>
-            <button type="submit">Register now</button>
+            <form-button type="submit">Register now</form-button>
           </footer>
         </form>
       </Host>

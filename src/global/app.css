@@ -15,6 +15,7 @@ body {
 }
 
 :root {
-  --shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.38);
+  --color-button: #fb7753;
   --radius: 4px;
+  --shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.38);
 }

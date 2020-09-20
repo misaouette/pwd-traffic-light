@@ -34,16 +34,3 @@ h2 {
   font-size: 1.2em;
   color:#777;
 }
-
-button[type="submit"] {
-  background-color: #fb7753;
-  border: 1px solid #eb6743;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  color: #fff;
-  padding: 0.5rem;
-  margin: 1rem 0 0 0;
-  max-width: 10rem;
-  text-transform: uppercase;
-  word-spacing: 100vw;
-}

@@ -1,0 +1,37 @@
+:host {
+  --color-form-button: var(--color-button, #009fd4);
+}
+
+button {
+  background-color: var(--color-form-button);
+  border: 3px solid var(--color-form-button);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: #fff;
+  padding: 0.5rem;
+  margin: 1rem 0 0 0;
+  max-width: 10rem;
+  word-spacing: 100vw;
+  text-transform: capitalize;
+}
+
+button:hover,
+button:focus {
+  background-color: #fff;
+  color: var(--color-form-button);
+  text-transform: uppercase;
+  outline: 0;
+}
+
+button:focus:not(:focus-visible) {
+  background-color: var(--color-form-button);
+  color: #fff;
+  max-width: 10rem;
+  text-transform: capitalize;
+}
+
+button:focus-visible {
+  padding: 0.7rem 0;
+  font-size: 1.1em;
+  max-width: 11rem;
+}

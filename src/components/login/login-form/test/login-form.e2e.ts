@@ -13,7 +13,7 @@ describe('login-form', () => {
     const page = await newE2EPage();
     await page.setContent('<login-form></login-form>');
 
-    const element = await page.find('login-form >>> button');
+    const element = await page.find('login-form >>> form-button');
     expect(element.textContent).toEqual('Register now');
   });
 });
