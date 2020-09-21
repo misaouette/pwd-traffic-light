@@ -7,7 +7,6 @@ import TRANSLATIONS from './translations/en-us';
   shadow: true,
 })
 export class LoginForm {
-
   render() {
     return (
       <Host>
@@ -16,7 +15,10 @@ export class LoginForm {
             <h1>{TRANSLATIONS.register}</h1>
             <h2>{TRANSLATIONS.create_account}</h2>
           </header>
-          <main></main>
+          <main>
+            <form-input label={TRANSLATIONS.email_address} name="username" required={true} type="email" vspace={true} />
+            <form-input label={TRANSLATIONS.password} name="password" required={true} type="password" vspace={true} />
+          </main>
           <footer>
             <form-button type="submit">Register now</form-button>
           </footer>
@@ -24,5 +26,4 @@ export class LoginForm {
       </Host>
     );
   }
-
 }

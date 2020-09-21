@@ -1,4 +1,6 @@
 export default {
-  "create_account": "Create your personal account",
-  "register": "Register"
-}
+  register: 'Register',
+  create_account: 'Create your personal account',
+  email_address: 'Email address',
+  password: 'Password',
+};
