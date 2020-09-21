@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+  position: relative;
+  --color-form-input-border: var(--color-input-border, #009fd4)
+}
+
+:host([vspace]) {
+  margin-top: calc(var(--vmargin-normal, 1rem) + 1rem);
+  margin-bottom: var(--vmargin-normal, 1rem);
+}
+
+label {
+  bottom: 95%;
+  display: none;
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  position: absolute;
+}
+
+input {
+  border-color: #ddd;
+  border-radius: var(--radius-big, 6px);
+  border-style: solid;
+  padding: 0.5rem;
+  width: 80%;
+}
+
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  display: block;
+  bottom: 98%;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input:focus,
+input:focus-visible {
+  border-color: var(--color-form-input-border);
+  outline: none;
+}

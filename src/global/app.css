@@ -15,7 +15,11 @@ body {
 }
 
 :root {
-  --color-button: #fb7753;
+  --color-main: #fb7753;
+  --color-button: var(--color-main);
+  --color-input-border: var(--color-main);
   --radius: 4px;
+  --radius-big: 6px;
   --shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.38);
+  --vmargin-normal: 1rem;
 }
