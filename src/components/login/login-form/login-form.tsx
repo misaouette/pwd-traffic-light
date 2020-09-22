@@ -17,7 +17,7 @@ export class LoginForm {
           </header>
           <main>
             <form-input label={TRANSLATIONS.email_address} name="username" required={true} type="email" vspace={true} />
-            <form-input label={TRANSLATIONS.password} name="password" required={true} type="password" vspace={true} />
+            <login-password-input label={TRANSLATIONS.password} name="password" vspace={true} />
           </main>
           <footer>
             <form-button type="submit">Register now</form-button>
