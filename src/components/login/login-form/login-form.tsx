@@ -1,5 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Listen, Host, State, h } from '@stencil/core';
 import TRANSLATIONS from './translations/en-us';
+import inputValidatedPayload = Validation.inputValidatedPayload;
 
 @Component({
   tag: 'login-form',
@@ -7,7 +8,15 @@ import TRANSLATIONS from './translations/en-us';
   shadow: true,
 })
 export class LoginForm {
+  @State() isValidByName: { username: boolean; password: boolean } = { username: false, password: false };
+
+  @Listen('inputValidated')
+  handleValidation({ detail: { inputName, isValid } }: CustomEvent<inputValidatedPayload>) {
+    this.isValidByName = { ...this.isValidByName, ...{ [inputName]: isValid } };
+  }
+
   render() {
+    const disabled: boolean = Object.values(this.isValidByName).some(isValid => !isValid);
     return (
       <Host>
         <form>
@@ -20,7 +29,9 @@ export class LoginForm {
             <login-password-input label={TRANSLATIONS.password} name="password" vspace={true} />
           </main>
           <footer>
-            <form-button type="submit">Register now</form-button>
+            <form-button disabled={disabled} type="submit">
+              Register now
+            </form-button>
           </footer>
         </form>
       </Host>
