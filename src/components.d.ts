@@ -24,6 +24,11 @@ export namespace Components {
     }
     interface LoginForm {
     }
+    interface LoginPasswordInput {
+        "label": string;
+        "name": string;
+        "vspace": boolean;
+    }
 }
 declare global {
     interface HTMLFormButtonElement extends Components.FormButton, HTMLStencilElement {
@@ -50,11 +55,18 @@ declare global {
         prototype: HTMLLoginFormElement;
         new (): HTMLLoginFormElement;
     };
+    interface HTMLLoginPasswordInputElement extends Components.LoginPasswordInput, HTMLStencilElement {
+    }
+    var HTMLLoginPasswordInputElement: {
+        prototype: HTMLLoginPasswordInputElement;
+        new (): HTMLLoginPasswordInputElement;
+    };
     interface HTMLElementTagNameMap {
         "form-button": HTMLFormButtonElement;
         "form-input": HTMLFormInputElement;
         "form-validometer": HTMLFormValidometerElement;
         "login-form": HTMLLoginFormElement;
+        "login-password-input": HTMLLoginPasswordInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -76,11 +88,17 @@ declare namespace LocalJSX {
     }
     interface LoginForm {
     }
+    interface LoginPasswordInput {
+        "label"?: string;
+        "name"?: string;
+        "vspace"?: boolean;
+    }
     interface IntrinsicElements {
         "form-button": FormButton;
         "form-input": FormInput;
         "form-validometer": FormValidometer;
         "login-form": LoginForm;
+        "login-password-input": LoginPasswordInput;
     }
 }
 export { LocalJSX as JSX };
@@ -91,6 +109,7 @@ declare module "@stencil/core" {
             "form-input": LocalJSX.FormInput & JSXBase.HTMLAttributes<HTMLFormInputElement>;
             "form-validometer": LocalJSX.FormValidometer & JSXBase.HTMLAttributes<HTMLFormValidometerElement>;
             "login-form": LocalJSX.LoginForm & JSXBase.HTMLAttributes<HTMLLoginFormElement>;
+            "login-password-input": LocalJSX.LoginPasswordInput & JSXBase.HTMLAttributes<HTMLLoginPasswordInputElement>;
         }
     }
 }
