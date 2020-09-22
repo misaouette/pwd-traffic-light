@@ -8,4 +8,9 @@ declare namespace Validation {
     isValid: boolean;
     message: string;
   }
+
+  export interface inputValidatedPayload {
+    inputName: string;
+    isValid: boolean;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
 
 /// <reference path="../../../../types/Validation.ts" />
 
@@ -20,12 +20,24 @@ export class FormInput {
 
   @State() criteriaList: Validation.Criteria[];
 
+  @Event() inputValidated: EventEmitter<Validation.inputValidatedPayload>;
+
   constructor() {
     uid++;
   }
 
   handleInput(event) {
-    this.criteriaList = this.rules.map(({ message, test }) => ({ message, isValid: test?.(event?.target?.value) }));
+    const newValue = event?.target?.value;
+
+    this.criteriaList = this.rules.map(({ message, test }) => ({ message, isValid: test?.(newValue) }));
+
+    const requiredValid = !this.required || newValue?.length > 0;
+    const criteriaValid = this.criteriaList.every(({ isValid = true }) => isValid);
+
+    this.inputValidated.emit({
+      inputName: this.name,
+      isValid: requiredValid && criteriaValid,
+    });
   }
 
   render() {

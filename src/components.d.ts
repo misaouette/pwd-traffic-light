@@ -76,6 +76,7 @@ declare namespace LocalJSX {
     interface FormInput {
         "label": string;
         "name": string;
+        "onInputValidated"?: (event: CustomEvent<Validation.inputValidatedPayload>) => void;
         "required"?: boolean;
         "rules"?: Validation.Rule[];
         "type"?: string;
