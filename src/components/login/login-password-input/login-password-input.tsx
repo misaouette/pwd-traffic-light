@@ -40,6 +40,6 @@ export class LoginPasswordInput {
   @Prop() vspace: boolean;
 
   render() {
-    return <form-input label={this.label} name={this.name} required={true} rules={RULES} type="password" vspace={this.vspace} />;
+    return <form-input label={this.label} name={this.name} required={true} rules={RULES} type="password" vspace={this.vspace} withTogglePasswordVisibility={true} />;
   }
 }

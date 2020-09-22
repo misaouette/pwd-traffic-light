@@ -10,6 +10,10 @@
   margin-bottom: var(--vmargin-normal, 1rem);
 }
 
+:host(:focus) {
+  outline: 0;
+}
+
 label {
   bottom: 95%;
   display: none;
@@ -26,18 +30,40 @@ input {
   width: 80%;
 }
 
+/* Input Focus */
+
 input:not(:placeholder-shown) + label,
 input:focus + label {
   display: block;
   bottom: 98%;
 }
-
 input:focus::placeholder {
   color: transparent;
 }
-
 input:focus,
 input:focus-visible {
   border-color: var(--color-form-input-border);
   outline: none;
+}
+
+/* Toggle Password Visibility */
+
+.togglePasswordVisibility {
+  display: none;
+  background-image: url(./assets/emoji/mizaru.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.togglePasswordVisibility.visible {
+  background-image: url(./assets/emoji/shizaru.svg);
+
+}
+input:focus ~ .togglePasswordVisibility {
+  margin-left: 0.2rem;
+  display: inline-block;
 }

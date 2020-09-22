@@ -18,6 +18,7 @@ export namespace Components {
         "type": string;
         "value": string;
         "vspace": boolean;
+        "withTogglePasswordVisibility": boolean;
     }
     interface FormValidometer {
         "criteriaList": Validation.Criteria[];
@@ -84,6 +85,7 @@ declare namespace LocalJSX {
         "type"?: string;
         "value"?: string;
         "vspace"?: boolean;
+        "withTogglePasswordVisibility"?: boolean;
     }
     interface FormValidometer {
         "criteriaList": Validation.Criteria[];

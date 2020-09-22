@@ -7,7 +7,7 @@ let uid = 0;
 @Component({
   tag: 'form-input',
   styleUrl: 'form-input.css',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class FormInput {
   @Prop() label!: string;
@@ -16,9 +16,11 @@ export class FormInput {
   @Prop() rules: Validation.Rule[] = [];
   @Prop() type: string = 'text';
   @Prop() value: string;
+  @Prop() withTogglePasswordVisibility: boolean;
   @Prop({ reflect: true }) vspace: boolean;
 
   @State() criteriaList: Validation.Criteria[];
+  @State() localType: string = this.type;
 
   @Event() inputValidated: EventEmitter<Validation.inputValidatedPayload>;
 
@@ -40,8 +42,21 @@ export class FormInput {
     });
   }
 
+  handlePasswordVisibilityToggle() {
+    if (this.type !== 'password') {
+      return;
+    }
+
+    if (this.localType === 'password') {
+      this.localType = 'text';
+      return;
+    }
+
+    this.localType = 'password';
+  }
+
   render() {
-    const { label, name, required, type, value } = this;
+    const { label, localType, name, required, value } = this;
     const id = `${name}-${uid}`;
     const labelId = `label-${id}`;
 
@@ -51,16 +66,21 @@ export class FormInput {
       name,
       placeholder: label,
       required,
-      type,
+      type: localType,
       value,
     };
 
     return (
       <Host>
-        <input {...inputProps} onInput={event => this.handleInput(event)} />
-        <label id={labelId} htmlFor={id}>
-          {label}
-        </label>
+        <div>
+          <input {...inputProps} onInput={event => this.handleInput(event)} />
+          <label id={labelId} htmlFor={id}>
+            {label}
+          </label>
+          {this.withTogglePasswordVisibility && (
+            <div class={`togglePasswordVisibility${localType === 'text' ? ' visible' : ''}`} onClick={() => this.handlePasswordVisibilityToggle()} />
+          )}
+        </div>
         <form-validometer criteriaList={this.criteriaList} vspaceSmall />
       </Host>
     );
