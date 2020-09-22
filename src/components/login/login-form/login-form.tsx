@@ -8,6 +8,9 @@ import inputValidatedPayload = Validation.inputValidatedPayload;
   shadow: true,
 })
 export class LoginForm {
+  /**
+   *  Object storing the validity of each control of the form
+   */
   @State() isValidByName: { username: boolean; password: boolean } = { username: false, password: false };
 
   @Listen('inputValidated')

@@ -10,16 +10,58 @@ let uid = 0;
   shadow: { delegatesFocus: true },
 })
 export class FormInput {
+  /**
+   *  HTML Label text
+   */
   @Prop() label!: string;
+
+  /**
+   *  HTML Input name attribute
+   */
   @Prop() name!: string;
+
+  /**
+   *  HTML Input required attribute
+   */
   @Prop() required: boolean;
+
+  /**
+   *  Array of {test, message} objects defining the functions to validate/invalidate the input.
+   *  - `message` must contain <mark> element if isValid is defined.
+   *  - leave `test` undefined if the message is purely descriptive and contains no validation.
+   */
   @Prop() rules: Validation.Rule[] = [];
+
+  /**
+   *  HTML Input type attribute
+   */
   @Prop() type: string = 'text';
+
+  /**
+   *  HTML Input value attribute
+   */
   @Prop() value: string;
+
+  /**
+   *  Flag to display the togglePasswordVisibilityIcon
+   */
   @Prop() withTogglePasswordVisibility: boolean;
+
+  /**
+   *  Flag to add standard vertical space around the input
+   */
   @Prop({ reflect: true }) vspace: boolean;
 
+  /**
+   *  Array of {isValid, message} objects describing the valid and invalid criteria.
+   *  - `message` must contain <mark> element if isValid is defined.
+   *  - leave `isValid` undefined if the message is purely descriptive and contains no validation.
+   */
   @State() criteriaList: Validation.Criteria[];
+
+  /**
+   *  Internal type used to show/hide the password character
+   */
   @State() localType: string = this.type;
 
   @Event() inputValidated: EventEmitter<Validation.inputValidatedPayload>;

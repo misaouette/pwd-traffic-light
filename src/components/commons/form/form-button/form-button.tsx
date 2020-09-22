@@ -6,7 +6,14 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class FormButton {
+  /**
+   *  HTML Button disabled attribute
+   */
   @Prop() disabled: boolean = false;
+
+  /**
+   *  HTML Button type attribute
+   */
   @Prop() type: string;
 
   render() {

@@ -7,28 +7,73 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface FormButton {
+        /**
+          * HTML Button disabled attribute
+         */
         "disabled": boolean;
+        /**
+          * HTML Button type attribute
+         */
         "type": string;
     }
     interface FormInput {
+        /**
+          * HTML Label text
+         */
         "label": string;
+        /**
+          * HTML Input name attribute
+         */
         "name": string;
+        /**
+          * HTML Input required attribute
+         */
         "required": boolean;
+        /**
+          * Array of {test, message} objects defining the functions to validate/invalidate the input. - `message` must contain <mark> element if isValid is defined. - leave `test` undefined if the message is purely descriptive and contains no validation.
+         */
         "rules": Validation.Rule[];
+        /**
+          * HTML Input type attribute
+         */
         "type": string;
+        /**
+          * HTML Input value attribute
+         */
         "value": string;
+        /**
+          * Flag to add standard vertical space around the input
+         */
         "vspace": boolean;
+        /**
+          * Flag to display the togglePasswordVisibilityIcon
+         */
         "withTogglePasswordVisibility": boolean;
     }
     interface FormValidometer {
+        /**
+          * Array of {isValid, message} objects describing the valid and invalid criteria. - `message` must contain <mark> element if isValid is defined. - leave `isValid` undefined if the message is purely descriptive and contains no validation.
+         */
         "criteriaList": Validation.Criteria[];
+        /**
+          * Flag to add small vertical space above the validometer
+         */
         "vspaceSmall": boolean;
     }
     interface LoginForm {
     }
     interface LoginPasswordInput {
+        /**
+          * HTML Label text
+         */
         "label": string;
+        /**
+          * HTML Input name attribute
+         */
         "name": string;
+        /**
+          * Flag to add standard vertical space around the input
+         */
         "vspace": boolean;
     }
 }
@@ -73,29 +118,74 @@ declare global {
 }
 declare namespace LocalJSX {
     interface FormButton {
+        /**
+          * HTML Button disabled attribute
+         */
         "disabled"?: boolean;
+        /**
+          * HTML Button type attribute
+         */
         "type"?: string;
     }
     interface FormInput {
+        /**
+          * HTML Label text
+         */
         "label": string;
+        /**
+          * HTML Input name attribute
+         */
         "name": string;
         "onInputValidated"?: (event: CustomEvent<Validation.inputValidatedPayload>) => void;
+        /**
+          * HTML Input required attribute
+         */
         "required"?: boolean;
+        /**
+          * Array of {test, message} objects defining the functions to validate/invalidate the input. - `message` must contain <mark> element if isValid is defined. - leave `test` undefined if the message is purely descriptive and contains no validation.
+         */
         "rules"?: Validation.Rule[];
+        /**
+          * HTML Input type attribute
+         */
         "type"?: string;
+        /**
+          * HTML Input value attribute
+         */
         "value"?: string;
+        /**
+          * Flag to add standard vertical space around the input
+         */
         "vspace"?: boolean;
+        /**
+          * Flag to display the togglePasswordVisibilityIcon
+         */
         "withTogglePasswordVisibility"?: boolean;
     }
     interface FormValidometer {
+        /**
+          * Array of {isValid, message} objects describing the valid and invalid criteria. - `message` must contain <mark> element if isValid is defined. - leave `isValid` undefined if the message is purely descriptive and contains no validation.
+         */
         "criteriaList": Validation.Criteria[];
+        /**
+          * Flag to add small vertical space above the validometer
+         */
         "vspaceSmall"?: boolean;
     }
     interface LoginForm {
     }
     interface LoginPasswordInput {
+        /**
+          * HTML Label text
+         */
         "label"?: string;
+        /**
+          * HTML Input name attribute
+         */
         "name"?: string;
+        /**
+          * Flag to add standard vertical space around the input
+         */
         "vspace"?: boolean;
     }
     interface IntrinsicElements {

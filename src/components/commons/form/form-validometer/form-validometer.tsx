@@ -8,7 +8,16 @@ import { Component, Host, Prop, Watch, h } from '@stencil/core';
   shadow: true,
 })
 export class FormValidometer {
+  /**
+   *  Array of {isValid, message} objects describing the valid and invalid criteria.
+   *  - `message` must contain <mark> element if isValid is defined.
+   *  - leave `isValid` undefined if the message is purely descriptive and contains no validation.
+   */
   @Prop() criteriaList!: Validation.Criteria[];
+
+  /**
+   *  Flag to add small vertical space above the validometer
+   */
   @Prop({ reflect: true }) vspaceSmall: boolean;
 
   @Watch('criteriaList')

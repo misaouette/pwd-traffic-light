@@ -35,8 +35,19 @@ const RULES: Validation.Rule[] = [
   shadow: true,
 })
 export class LoginPasswordInput {
+  /**
+   *  HTML Label text
+   */
   @Prop() label: string;
+
+  /**
+   *  HTML Input name attribute
+   */
   @Prop() name: string;
+
+  /**
+   *  Flag to add standard vertical space around the input
+   */
   @Prop() vspace: boolean;
 
   render() {
