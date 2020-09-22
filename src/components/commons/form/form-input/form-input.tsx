@@ -1,4 +1,6 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
+
+/// <reference path="../../../../types/Validation.ts" />
 
 let uid = 0;
 
@@ -11,12 +13,19 @@ export class FormInput {
   @Prop() label!: string;
   @Prop() name!: string;
   @Prop() required: boolean;
+  @Prop() rules: Validation.Rule[] = [];
   @Prop() type: string = 'text';
   @Prop() value: string;
   @Prop({ reflect: true }) vspace: boolean;
 
+  @State() criteriaList: Validation.Criteria[];
+
   constructor() {
     uid++;
+  }
+
+  handleInput(event) {
+    this.criteriaList = this.rules.map(({ message, test }) => ({ message, isValid: test?.(event?.target?.value) }));
   }
 
   render() {
@@ -36,8 +45,11 @@ export class FormInput {
 
     return (
       <Host>
-        <input {...inputProps} />
-        <label id={labelId} htmlFor={id}>{label}</label>
+        <input {...inputProps} onInput={event => this.handleInput(event)} />
+        <label id={labelId} htmlFor={id}>
+          {label}
+        </label>
+        <form-validometer criteriaList={this.criteriaList} vspaceSmall />
       </Host>
     );
   }

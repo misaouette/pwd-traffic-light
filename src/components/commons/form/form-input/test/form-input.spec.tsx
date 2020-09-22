@@ -14,6 +14,7 @@ describe('form-input', () => {
             <input aria-labelledby='label-example-1' id='example-1' name='example' placeholder='http://' required='' type='url' value='http://example.com'/>
             <label htmlFor='example-1' id='label-example-1'>http://</label>
           </div>
+         <form-validometer vspacesmall=""></form-validometer>
         </mock:shadow-root>
       </form-input>
     `);
@@ -31,6 +32,7 @@ describe('form-input', () => {
             <input aria-labelledby='label-example-2' id='example-2' name='example' placeholder='http://' type='url' value='http://example.com'/>
             <label htmlFor='example-2' id='label-example-2'>http://</label>
           </div>
+          <form-validometer vspacesmall=""></form-validometer>
         </mock:shadow-root>
       </form-input>
     `);

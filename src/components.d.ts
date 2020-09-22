@@ -13,6 +13,7 @@ export namespace Components {
         "label": string;
         "name": string;
         "required": boolean;
+        "rules": Validation.Rule[];
         "type": string;
         "value": string;
         "vspace": boolean;
@@ -64,6 +65,7 @@ declare namespace LocalJSX {
         "label": string;
         "name": string;
         "required"?: boolean;
+        "rules"?: Validation.Rule[];
         "type"?: string;
         "value"?: string;
         "vspace"?: boolean;
