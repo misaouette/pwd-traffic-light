@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form-validometer renders a list of valid and invalid criteria 1`] = `
+<form-validometer 'url="" <mark="" criterialist="{[{message:">
+  <mock:shadow-root></mock:shadow-root>
+  must start with http://', isValid: true},{message: 'url
+  <mark>
+    cannot contain localhost
+  </mark>
+  ', isValid: false}]}&gt;
+</form-validometer>
+`;
