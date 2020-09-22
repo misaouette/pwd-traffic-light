@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface FormButton {
+        "disabled": boolean;
         "type": string;
     }
     interface FormInput {
@@ -71,6 +72,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface FormButton {
+        "disabled"?: boolean;
         "type"?: string;
     }
     interface FormInput {

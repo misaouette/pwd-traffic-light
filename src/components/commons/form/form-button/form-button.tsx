@@ -6,11 +6,13 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class FormButton {
+  @Prop() disabled: boolean = false;
   @Prop() type: string;
 
   render() {
+    const { disabled, type } = this;
     return (
-      <button type={this.type}>
+      <button {...{ disabled, type }}>
         <slot />
       </button>
     );

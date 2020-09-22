@@ -35,3 +35,9 @@ button:focus-visible {
   font-size: 1.1em;
   max-width: 11rem;
 }
+
+button:disabled {
+  background-color: var(--color-form-button);
+  opacity: 0.5;
+  color: #fff;
+}
