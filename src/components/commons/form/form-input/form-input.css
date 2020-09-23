@@ -46,6 +46,28 @@ input:focus-visible {
   outline: none;
 }
 
+/* Inline inputs */
+
+input[type="checkbox"],
+input[type="radio"] {
+  border-color: #ddd;
+  border-radius: var(--radius-big, 6px);
+  border-style: solid;
+  width: auto;
+  margin: 0.25rem;
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px auto var(--color-form-input-border);
+}
+
+input[type="checkbox"]:not(:placeholder-shown) + label,
+input[type="radio"]:not(:placeholder-shown) + label {
+  bottom: auto;
+  display: inline;
+}
+
 /* Toggle Password Visibility */
 
 .togglePasswordVisibility {
@@ -66,4 +88,14 @@ input:focus-visible {
 input:focus ~ .togglePasswordVisibility {
   margin-left: 0.2rem;
   display: inline-block;
+}
+
+/* Links */
+
+a {
+  color: var(--color-form-input-border)
+}
+
+a:hover {
+  text-decoration: underline var(--color-form-input-border);
 }

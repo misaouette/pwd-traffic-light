@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, State, h, Watch } from '@stencil/core';
 
 /// <reference path="../../../../types/Validation.ts" />
 
@@ -64,18 +64,34 @@ export class FormInput {
    */
   @State() localType: string = this.type;
 
+  @Watch('label')
+  validateCriteriaList(label: string) {
+    const dangerousLabel = label.includes('<script>');
+    if (dangerousLabel) {
+      throw new Error("label mustn't contain a <script> tag");
+    }
+  }
+
   @Event() inputValidated: EventEmitter<Validation.inputValidatedPayload>;
 
   constructor() {
     uid++;
   }
 
-  handleInput(event) {
+  validate(event) {
     const newValue = event?.target?.value;
 
     this.criteriaList = this.rules.map(({ message, test }) => ({ message, isValid: test?.(newValue) }));
 
-    const requiredValid = !this.required || newValue?.length > 0;
+    let requiredValid = !this.required;
+    if (!requiredValid) {
+      if (this.type === 'checkbox') {
+        requiredValid = event?.target?.checked;
+      } else {
+        requiredValid = newValue?.length > 0;
+      }
+    }
+
     const criteriaValid = this.criteriaList.every(({ isValid = true }) => isValid);
 
     this.inputValidated.emit({
@@ -115,10 +131,8 @@ export class FormInput {
     return (
       <Host>
         <div>
-          <input {...inputProps} onInput={event => this.handleInput(event)} />
-          <label id={labelId} htmlFor={id}>
-            {label}
-          </label>
+          <input {...inputProps} onClick={event => this.validate(event)} onInput={event => this.validate(event)} />
+          <label id={labelId} htmlFor={id} innerHTML={label} />
           {this.withTogglePasswordVisibility && (
             <div class={`togglePasswordVisibility${localType === 'text' ? ' visible' : ''}`} onClick={() => this.handlePasswordVisibilityToggle()} />
           )}

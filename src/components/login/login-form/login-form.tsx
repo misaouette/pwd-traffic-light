@@ -11,7 +11,7 @@ export class LoginForm {
   /**
    *  Object storing the validity of each control of the form
    */
-  @State() isValidByName: { username: boolean; password: boolean } = { username: false, password: false };
+  @State() isValidByName: { username: boolean; password: boolean; ['terms-of-service']: boolean } = { username: false, password: false, ['terms-of-service']: false };
 
   @Listen('inputValidated')
   handleValidation({ detail: { inputName, isValid } }: CustomEvent<inputValidatedPayload>) {
@@ -32,6 +32,7 @@ export class LoginForm {
             <login-password-input label={TRANSLATIONS.password} name="password" vspace={true} />
           </main>
           <footer>
+            <form-input label={TRANSLATIONS.terms_of_service} name="terms-of-service" required={true} type="checkbox" vspace={true} />
             <form-button disabled={disabled} type="submit">
               Register now
             </form-button>
