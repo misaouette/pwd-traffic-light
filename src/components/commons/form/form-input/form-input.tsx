@@ -18,7 +18,7 @@ export class FormInput {
   /**
    *  HTML Input name attribute
    */
-  @Prop() name!: string;
+  @Prop({ reflect: true }) name!: string;
 
   /**
    *  HTML Input required attribute
