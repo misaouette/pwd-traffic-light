@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+  position: relative;
+  --color-form-input-border: var(--color-input-border, #009fd4)
+}
+
+:host([vspace]) {
+  margin-top: calc(var(--vmargin-normal, 1rem) + 1rem);
+  margin-bottom: var(--vmargin-normal, 1rem);
+}
+
+:host(:focus) {
+  outline: 0;
+}
+
+label {
+  bottom: 95%;
+  display: none;
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  position: absolute;
+}
+
+input {
+  border-color: #ddd;
+  border-radius: var(--radius-big, 6px);
+  border-style: solid;
+  padding: 0.5rem;
+  width: 80%;
+}
+
+/* Input Focus */
+
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  display: block;
+  bottom: 98%;
+}
+input:focus::placeholder {
+  color: transparent;
+}
+input:focus,
+input:focus-visible {
+  border-color: var(--color-form-input-border);
+  outline: none;
+}
+
+/* Inline inputs */
+
+input[type="checkbox"],
+input[type="radio"] {
+  border-color: #ddd;
+  border-radius: var(--radius-big, 6px);
+  border-style: solid;
+  width: auto;
+  margin: 0.25rem;
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px auto var(--color-form-input-border);
+}
+
+input[type="checkbox"]:not(:placeholder-shown) + label,
+input[type="radio"]:not(:placeholder-shown) + label {
+  bottom: auto;
+  display: inline;
+}
+
+/* Toggle Password Visibility */
+
+.togglePasswordVisibility {
+  display: none;
+  background-image: url(./assets/emoji/mizaru.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.togglePasswordVisibility.visible {
+  background-image: url(./assets/emoji/shizaru.svg);
+
+}
+input:focus ~ .togglePasswordVisibility {
+  margin-left: 0.2rem;
+  display: inline-block;
+}
+
+/* Links */
+
+a {
+  color: var(--color-form-input-border)
+}
+
+a:hover {
+  text-decoration: underline var(--color-form-input-border);
+}

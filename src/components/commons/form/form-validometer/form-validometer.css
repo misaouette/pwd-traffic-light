@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  font-size: 0.8rem;
+}
+:host([vspace-small]) {
+  margin-top: var(--vmargin-small);
+}
+
+.criteria {
+  display: flex;
+}
+
+.icon {
+  --icon-size: 0.9rem;
+  background-size: var(--icon-size);
+  height: var(--icon-size);
+  width: var(--icon-size);
+  margin-right: 0.2rem;
+  margin-top: 0.1rem;
+}
+.invalid .icon {
+  background-image: url(./assets/validation/invalid.png);
+}
+.valid .icon {
+  background-image: url(./assets/validation/valid.png);
+}
+
+mark {
+  background-color: transparent;
+}
+.invalid mark {
+  color: #d91e18;
+}
+.valid mark {
+  color: #00aa55;
+}
