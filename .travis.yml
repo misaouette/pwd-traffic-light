@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - 14.5
+
+jobs:
+  include:
+    - stage: Build
+      script: npm run build
+    - stage: Test
+      script: npm run test.spec
+    -
+      script: npm run test.e2e
+    - stage: Deploy
+      script: npm run build
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: false
+        local_dir: ./www
+        committer_from_gh: true
+        verbose: true
+        on:
+          branch: ${TRAVIS_BRANCH}
+  allow_failures:
+    - stage: Test
